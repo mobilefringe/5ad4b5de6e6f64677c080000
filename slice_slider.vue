@@ -199,8 +199,6 @@
             methods: {
                 init () {
                     s = this.settings;
-                      console.log("initiating slice slider", s.navPrev, s.navNext);
-                      this.bindEvents();
                 },
                 prevSlide () {
                     // If on first slide, loop to last
