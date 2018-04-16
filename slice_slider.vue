@@ -157,63 +157,6 @@
             },
             computed: {
                 
-                banners () {
-                    var banners = this.$store.state.banners;
-                    banners.map(banner => { 
-                        banner.image_url = "//codecloud.cdn.speedyrails.net/sites/5ad4b5de6e6f64677c080000/image/png/1522876174746/Hero_Image.png";
-                        banner.name = "Visit Mall Maverick";
-                        banner.description = "Discover the Mall";
-                        banner.url = "/stores";
-                    });
-                    
-                    // return _.orderBy(this.$store.state.banners, ['position'], ['asc']);
-                    return _.orderBy(banners, ['position'], ['asc']);
-                },
-                feature_items () {
-                    // return this.$store.state.feature_items;
-                    var features = this.$store.state.feature_items;
-                    _.forEach(features, function(value, key) {
-                      
-                        if( _.includes([1], key) ) {
-                            value.masonry_class = "grid-item--height2";
-                        }
-                        else if ( _.includes([5], key) ){
-                            value.masonry_class = "grid-item--width2";
-                        }
-                        else {
-                            value.masonry_class = " ";
-                        }
-                        if(value.name === null || value.name === undefined || value.name.length == 0) {
-                            value.no_hover_class = false;
-                        }
-                        else {
-                            value.no_hover_class = true;
-                        }
-                    });
-                    return _.slice(features, [0], [6]);
-                },
-                mobile_feature_items () {
-                    var features = this.$store.state.feature_items;
-                    _.forEach(features, function(value, key) {
-                      
-                        if( _.includes([1], key) ) {
-                            value.masonry_class = "grid-item--height2";
-                        }
-                        else if ( _.includes([5], key) ){
-                            value.masonry_class = "grid-item--width2";
-                        }
-                        else {
-                            value.masonry_class = " ";
-                        }
-                        value.mobile_order = key + 1;
-                    });
-                    features = _.sortBy(features, [function(o) { return o.mobile_order; }]);
-                    return features;
-                },
-                full_address() {
-                    return this.property.address1 + '' + this.property.city + '' + this.property.country + '' + this.property.province_state + '' + this.property.province_state
-
-                },
                 sliceSlider() {
                     console.log("this.$refs", this.$refs);
                     let nav_prev = this.$refs["nav_prev"];
