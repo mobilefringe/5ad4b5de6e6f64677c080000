@@ -231,13 +231,15 @@
                 }
             },
             methods: {
-                prevClicked () {
+                prevSlide () {
                     
                 },
-                nextClicked () {
+                nextSlide () {
                     
                 },
-                showSlide
+                showSlide () {
+                    
+                }
             }
         })
     });
