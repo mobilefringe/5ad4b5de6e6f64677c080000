@@ -3100,8 +3100,11 @@ gallery:after{
     font-size: 3.75em;
     color: #fff;
     line-height: normal;
-        color: #ccc;
+    color: #ccc;
     text-shadow: #000 0px -1px;
+}
+.slide__img {
+    
 }
 @media (max-width: 1300px) {
     // #primary_nav ul .menu_item {
