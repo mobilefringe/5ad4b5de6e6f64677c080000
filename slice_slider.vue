@@ -236,7 +236,8 @@
                 },
                 nextClicked () {
                     
-                }
+                },
+                showSlide
             }
         })
     });
