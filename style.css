@@ -3116,6 +3116,9 @@ gallery:after{
     width: 100%;
     bottom: 25px;
 }
+..slides-nav__nav {
+    
+}
 // .slide__img {
 //     background-attachment: unset;
 // }
