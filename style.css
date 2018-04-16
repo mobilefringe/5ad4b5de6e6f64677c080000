@@ -3099,7 +3099,9 @@ gallery:after{
 .slide__title{
     font-size: 3.75em;
     color: #fff;
-        line-height: normal;
+    line-height: normal;
+        color: #ccc;
+    text-shadow: #000 0px -1px;
 }
 @media (max-width: 1300px) {
     // #primary_nav ul .menu_item {
