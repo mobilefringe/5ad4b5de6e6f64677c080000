@@ -141,12 +141,6 @@
 
 <script>
     define(["Vue", "jquery"], function(Vue, $) {
-        Vue.use(VueMasonryPlugin.default);
-        Vue.use(VueLazyload);
-        
-  
-        // console.log("SliceSlider", SliceSlider);
-        
         return Vue.component("home-component", {
             template: template, // the variable template will be injected
             props:['locale'],
