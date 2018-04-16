@@ -174,27 +174,7 @@
                      * Show Slide
                      */
                     showSlide: function(){ 
-                      // reset
-                      s.delta = 0;
-                      // Bail if we're already sliding
-                      if ($('body').hasClass('is-sliding')){
-                        return;
-                      }
-                      // Loop through our slides
-                      s.slides.each(function(i, slide) {
-                
-                        // Toggle the is-active class to show slide
-                        $(slide).toggleClass('is-active', (i === s.currentSlideIndex)); 
-                        $(slide).toggleClass('is-prev', (i === s.currentSlideIndex - 1)); 
-                        $(slide).toggleClass('is-next', (i === s.currentSlideIndex + 1)); 
-                        
-                        // Add and remove is-sliding class
-                        $('body').addClass('is-sliding');
-                
-                        setTimeout(function(){
-                            $('body').removeClass('is-sliding');
-                        }, 1000);
-                      });
+                      
                     },
                 
                     /**
@@ -238,7 +218,27 @@
                       console.log("sliding to next");
                 },
                 showSlide () {
-                    
+                    // reset
+                      s.delta = 0;
+                      // Bail if we're already sliding
+                      if ($('body').hasClass('is-sliding')){
+                        return;
+                      }
+                      // Loop through our slides
+                      s.slides.each(function(i, slide) {
+                
+                        // Toggle the is-active class to show slide
+                        $(slide).toggleClass('is-active', (i === s.currentSlideIndex)); 
+                        $(slide).toggleClass('is-prev', (i === s.currentSlideIndex - 1)); 
+                        $(slide).toggleClass('is-next', (i === s.currentSlideIndex + 1)); 
+                        
+                        // Add and remove is-sliding class
+                        $('body').addClass('is-sliding');
+                
+                        setTimeout(function(){
+                            $('body').removeClass('is-sliding');
+                        }, 1000);
+                      });
                 }
             }
         })
