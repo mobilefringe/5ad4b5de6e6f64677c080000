@@ -3106,6 +3106,9 @@ gallery:after{
 // .slide__img {
 //     background-attachment: unset;
 // }
+.is-sliding .slide__img {
+  filter: grayscale(100%);
+}
 @media (max-width: 1300px) {
     // #primary_nav ul .menu_item {
     //     min-width: 130px;
