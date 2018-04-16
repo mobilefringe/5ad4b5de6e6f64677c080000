@@ -224,7 +224,7 @@
                       }
                       s.currentSlideIndex--;
                       
-                      SliceSlider.showSlide();
+                      this.showSlide();
                 },
                 nextSlide () {
                     s.currentSlideIndex++;
@@ -234,7 +234,7 @@
                         s.currentSlideIndex = 0;
                       }
                  
-                      SliceSlider.showSlide();
+                      this.showSlide();
                       console.log("sliding to next");
                 },
                 showSlide () {
