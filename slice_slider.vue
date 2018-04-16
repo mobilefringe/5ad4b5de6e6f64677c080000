@@ -79,6 +79,8 @@
             },
             watch : {
             },
+            computed: {
+            },
             methods: {
                 init () {
                     s = this.settings;
