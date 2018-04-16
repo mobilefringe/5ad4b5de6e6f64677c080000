@@ -1,0 +1,458 @@
+<template>
+	<div class="row page_content" v-if="dataLoaded">
+		<!--<div class="banner_div">-->
+		<!--	<div class="home-banner-container">-->
+		<!--		<slick ref="slick" :options="slickOptions">-->
+		<!--			<div class="" v-for="banner in banners" v-if="banners">-->
+					    <!--<div class="home-banner" v-bind:style="{ backgroundImage: 'url(' + banner.image_url + ')' }"></div>-->
+		<!--				<div class="home-banner" v-lazy:background-image="banner.image_url">-->
+						    <!--<div class="site_container">-->
+		<!--				        <div class="banner_text site_container">-->
+  <!--                                  <h2 class="banner_title">{{banner.name}}</h2>-->
+  <!--                                  <router-link class="banner_btn hvr-icon-wobble-horizontal" :to="banner.url">{{banner.description}} <i class="fa fa-angle-right hvr-icon"></i></router-link>-->
+  <!--                              </div>-->
+						    <!--</div>-->
+		<!--				</div>-->
+		<!--			</div>-->
+		<!--		</slick>-->
+		<!--	</div>-->
+		<!--</div>-->
+		<div class="slider_container" style="position: relative"> 
+		    <main>
+                <section class="slides"> 
+                  
+                  <section class="slides-nav">
+                    <nav class="slides-nav__nav">
+                      <button class="slides-nav__prev js-prev" ref="js_prev">Prev</button>
+                      <button class="slides-nav__next js-next" ref="js_next">Next</button>
+                    </nav>
+                  </section>
+                
+                  <section class="slide is-active">
+                    <div class="slide__content">
+                      <figure class="slide__figure"><div class="slide__img" style="background-image: url(https://source.unsplash.com/nfTA8pdaq9A/2000x1100)"></div></figure>
+                      <header class="slide__header">
+                        <h2 class="slide__title">
+                          <span class="title-line"><span>Click, Key</span></span>
+                          <span class="title-line"><span>Or Scroll Fool</span></span>
+                        </h2>
+                      </header>
+                    </div>
+                  </section>
+                
+                  <section class="slide">
+                    <div class="slide__content">
+                      <figure class="slide__figure"><div class="slide__img" style="background-image: url(https://source.unsplash.com/okmtVMuBzkQ/2000x1100)"></div></figure>
+                      <header class="slide__header">
+                        <h2 class="slide__title">
+                          <span class="title-line"><span>Slide Two</span></span>
+                          <span class="title-line"><span>Dood Mood</span></span>
+                        </h2>
+                      </header>
+                    </div>
+                  </section>
+                
+                  <section class="slide">
+                    <div class="slide__content">
+                      <figure class="slide__figure"><div class="slide__img" style="background-image: url(https://source.unsplash.com/WuQME0I_oZA/2000x1100)"></div></figure>
+                      <header class="slide__header">
+                        <h2 class="slide__title">
+                          <span class="title-line"><span>This Right</span></span>
+                          <span class="title-line"><span>Here Makes Three</span></span>
+                        </h2>
+                      </header>
+                    </div>
+                  </section>
+                
+                  <section class="slide">
+                    <div class="slide__content">
+                      <figure class="slide__figure"><div class="slide__img" style="background-image: url(https://source.unsplash.com/NsWcRlBT_74/2000x1100)"></div></figure>
+                      <header class="slide__header">
+                        <h2 class="slide__title">
+                          <span class="title-line"><span>How Now</span></span>
+                          <span class="title-line"><span>Part Four More</span></span>
+                        </h2>
+                      </header>
+                    </div>
+                  </section>
+                </section>
+            </main>
+        </div>
+		<div class="site_container">
+		    <div>
+		      <h3 class="home_page_title caps">{{$t("home_page.explore")}}</h3>
+		    </div>
+		    <div v-masonry transition-duration="0.3s" item-selector=".grid-item" >
+                <div v-masonry-tile class="item" >
+                    <div v-for="feature in feature_items" :class="'grid-item ' + feature.masonry_class ">
+                    	<div  :class="{ 'ih-item circle effect19' : feature.no_hover_class}"> 
+                    	<!--class="ih-item circle effect19"-->
+                    		<router-link :to="feature.url">
+                    			<img :src="feature.image_url" alt="name">
+                    			<div class="info">
+                    				<div class="content hvr-sink">
+                    					<h3 v-if="locale=='en-ca'"> {{feature.name}} </h3>
+                    					<h3 v-else> {{feature.name_2}} </h3>
+                    				</div>
+                    			</div>
+                    		</router-link>
+                    	</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+		      <h3 class="home_page_title caps">{{$t("home_page.our_feed")}}</h3>
+		    </div>
+		    <div class="insta-feed-container">
+                <a v-for="(item, index) in instaFeed" :href="item.link" target="_blank" class="no_padding">
+                    <div class="insta-feed-image "  v-lazy:background-image="item.images.standard_resolution.url">
+                        <!--<a :href="item.link" target="_blank"><img :src="item.images.thumbnail.url"/></a>-->
+                        <div class="ih-item circle effect19">
+                            <div class="info">
+                				<div class="content">
+                					<p> 
+                    					<span>@{{item.caption.from.username}}</span> <br/>
+                    					<i class="fa fa-heart"></i>{{item.likes.count}} <br/>
+                    					<i class="fa fa-comment"></i> {{item.comments.count}} 
+                					</p>
+                				</div>
+                			</div>
+            			</div>
+                    </div>
+                </a>
+            </div>
+            <div id="home_hours_container"  v-if="getTodayHours">
+                <p class="open_now">
+                    <span v-if="getTodayHours.is_closed == null || !getTodayHours.is_closed ">{{$t("header.open_today")}}</span>
+                    <span v-else>{{$t("header.closed")}}</span> 
+                    <span v-if="getTodayHours.is_closed == null || !getTodayHours.is_closed ">
+                        {{getTodayHours.open_time | moment("h:mma", timezone)}} - {{getTodayHours.close_time | moment("h:mma", timezone)}} 
+                    </span>
+                        
+                    </p>
+            </div>
+		</div>
+		<div style="height: 300px;margin-bottom:-30px;">
+		    <google-map :property="property"></google-map>
+		</div>
+		<!--AIzaSyCj7UeR0E-kWVAnM7XG4sgm38JnCm6eqx0-->
+	</div>
+</template>
+
+<script>
+    define(["Vue", "vuex", 'vue!vue-slick', 'js-cookie', 'masonry' , 'vue-masonry-plugin', 'vue-lazy-load', "vue!google_map", "jquery", "slice-slider"], function(Vue, Vuex, slick, Cookies, masonry, VueMasonryPlugin, VueLazyload, GoogleMapAPI, $,  SliceSlider) {
+        Vue.use(VueMasonryPlugin.default);
+        Vue.use(VueLazyload);
+        
+  
+        // console.log("SliceSlider", SliceSlider);
+        
+        return Vue.component("home-component", {
+            template: template, // the variable template will be injected
+            props:['locale'],
+            data: function() {
+                return {
+                    suggestionAttribute: 'name',
+                    search: '',
+                    slickOptions: {
+                        arrows: false,
+                        autoplay: true,
+                        autoplaySpeed: 6000,
+                        cssEase: 'linear',
+                        dots: true,
+                        fade: true,
+                        infinite: true,
+                        slidesToShow: 1,
+                        speed: 1600
+                    },
+                    dataLoaded: false,
+                    show_popup: false,
+                    popup: null,
+                    formData : {},
+                    instaFeed: null,
+                    show_slider: false
+                }
+            },
+            created () {
+                this.loadData().then(response => {
+                    this.dataLoaded = true;
+                    this.popup = this.$store.state.popups[0];
+                    var socialFeed = response[4].data;
+                    var social_feed = socialFeed.social.instagram;
+                    this.instaFeed = _.slice(social_feed, [0], [6]);
+                });
+            },
+            mounted () {
+                // this.sliceSlider.init();
+                // this.show_slider = true;
+                var vm= this;
+                setTimeout(function(){
+                    console.log("this.$refs.nav_prev", vm.$refs.nav_prev);
+                    vm.sliceSlider.init();
+                }, 1000);
+               
+            },
+            watch : {
+                dataLoaded () {
+                    var viewed = Cookies.get('popup_viewed');
+                    if(this.popup !== null && viewed !== "true") {
+                        Cookies.set('popup_viewed', "true");
+                        viewed = Cookies.get('popup_viewed');
+                        this.show_popup = true;
+                        this.popup.image_url = "//mallmaverick.cdn.speedyrails.net" + this.popup.photo_url;
+                        document.getElementById('popup_backdrop').style.display = "block";
+                    }
+                    else {
+                        document.getElementById('popup_backdrop').style.display = "none";
+                    }
+                    // this.show_slider = true;
+                    
+                },
+                formData () {
+                    this.formData.name = this.formData.firstname + " " + this.formData.lastname; 
+                },
+                locale: function(val, oldVal) {
+                    console.log("locale", this.locale);
+                },
+                // show_slider () {
+                //     if(this.show_slider) {
+                //         this.sliceSlider.init();
+                //     }
+                // }
+            },
+            computed: {
+                ...Vuex.mapGetters([
+                    'property',
+                    'timezone',
+                    'processedStores',
+                    'getTodayHours'
+                ]),
+                banners () {
+                    var banners = this.$store.state.banners;
+                    banners.map(banner => { 
+                        banner.image_url = "//codecloud.cdn.speedyrails.net/sites/5ad4b5de6e6f64677c080000/image/png/1522876174746/Hero_Image.png";
+                        banner.name = "Visit Mall Maverick";
+                        banner.description = "Discover the Mall";
+                        banner.url = "/stores";
+                    });
+                    
+                    // return _.orderBy(this.$store.state.banners, ['position'], ['asc']);
+                    return _.orderBy(banners, ['position'], ['asc']);
+                },
+                feature_items () {
+                    // return this.$store.state.feature_items;
+                    var features = this.$store.state.feature_items;
+                    _.forEach(features, function(value, key) {
+                      
+                        if( _.includes([1], key) ) {
+                            value.masonry_class = "grid-item--height2";
+                        }
+                        else if ( _.includes([5], key) ){
+                            value.masonry_class = "grid-item--width2";
+                        }
+                        else {
+                            value.masonry_class = " ";
+                        }
+                        if(value.name === null || value.name === undefined || value.name.length == 0) {
+                            value.no_hover_class = false;
+                        }
+                        else {
+                            value.no_hover_class = true;
+                        }
+                    });
+                    return _.slice(features, [0], [6]);
+                },
+                mobile_feature_items () {
+                    var features = this.$store.state.feature_items;
+                    _.forEach(features, function(value, key) {
+                      
+                        if( _.includes([1], key) ) {
+                            value.masonry_class = "grid-item--height2";
+                        }
+                        else if ( _.includes([5], key) ){
+                            value.masonry_class = "grid-item--width2";
+                        }
+                        else {
+                            value.masonry_class = " ";
+                        }
+                        value.mobile_order = key + 1;
+                    });
+                    features = _.sortBy(features, [function(o) { return o.mobile_order; }]);
+                    return features;
+                },
+                full_address() {
+                    return this.property.address1 + '' + this.property.city + '' + this.property.country + '' + this.property.province_state + '' + this.property.province_state
+
+                },
+                sliceSlider() {
+                    console.log("this.$refs", this.$refs);
+                    let nav_prev = this.$refs["nav_prev"];
+                    let nav_next = this.$refs["nav_next"];
+                    let vm = this;
+                    console.log("navPrev, navNext", nav_prev, nav_next);
+                    var SliceSlider = {
+    
+                    /**
+                     * Settings Object
+                     */
+                    settings: {
+                      delta:              0,
+                      currentSlideIndex:  0,
+                      scrollThreshold:    40,
+                      slides:             $('.slide'),
+                      numSlides:          $('.slide').length,
+                      navPrev:            vm.$refs["nav_prev"],
+                      navNext:            vm.$refs["nav_next"],
+                    },
+                    
+                    /**
+                     * Init
+                     */
+                    init: function() {
+                      s = this.settings;
+                      console.log("initiating slice slider", s.navPrev, s.navNext);
+                      this.bindEvents();
+                    },
+                    
+                    /**
+                     * Bind our click, scroll, key events
+                     */
+                    bindEvents: function(){
+                      console.log("s is", s);
+                      // Scrollwheel & trackpad
+                      s.slides.on({
+                        'DOMMouseScroll mousewheel' : SliceSlider.handleScroll
+                      });
+                      // On click prev
+                      s.navPrev.on({
+                        'click' : SliceSlider.prevSlide
+                      });
+                      // On click next
+                      s.navNext.on({
+                        'click' : SliceSlider.nextSlide
+                      });
+                      // On Arrow keys
+                      $(document).keyup(function(e) {
+                        // Left or back arrows
+                        if ((e.which === 37) ||  (e.which === 38)){
+                          SliceSlider.prevSlide();
+                        }
+                        // Down or right
+                        if ((e.which === 39) ||  (e.which === 40)) {
+                          SliceSlider.nextSlide();
+                        }
+                      });
+                    },
+                    
+                    /** 
+                     * Interept scroll direction
+                     */
+                    handleScroll: function(e){
+                
+                      // Scrolling up
+                      if (e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0) { 
+                
+                        s.delta--;
+                     
+                        if ( Math.abs(s.delta) >= s.scrollThreshold) {
+                          SliceSlider.prevSlide();
+                        }
+                      }
+                 
+                      // Scrolling Down
+                      else {
+                 
+                        s.delta++;
+                 
+                        if (s.delta >= s.scrollThreshold) {
+                          SliceSlider.nextSlide();
+                        }
+                      }
+                 
+                      // Prevent page from scrolling
+                      return false;
+                    },
+                
+                    /**
+                     * Show Slide
+                     */
+                    showSlide: function(){ 
+                      // reset
+                      s.delta = 0;
+                      // Bail if we're already sliding
+                      if ($('body').hasClass('is-sliding')){
+                        return;
+                      }
+                      // Loop through our slides
+                      s.slides.each(function(i, slide) {
+                
+                        // Toggle the is-active class to show slide
+                        $(slide).toggleClass('is-active', (i === s.currentSlideIndex)); 
+                        $(slide).toggleClass('is-prev', (i === s.currentSlideIndex - 1)); 
+                        $(slide).toggleClass('is-next', (i === s.currentSlideIndex + 1)); 
+                        
+                        // Add and remove is-sliding class
+                        $('body').addClass('is-sliding');
+                
+                        setTimeout(function(){
+                            $('body').removeClass('is-sliding');
+                        }, 1000);
+                      });
+                    },
+                
+                    /**
+                     * Previous Slide
+                     */
+                    prevSlide: function(){
+                      
+                      // If on first slide, loop to last
+                      if (s.currentSlideIndex <= 0) {
+                        s.currentSlideIndex = s.numSlides;
+                      }
+                      s.currentSlideIndex--;
+                      
+                      SliceSlider.showSlide();
+                    },
+                
+                    /**
+                     * Next Slide
+                     */
+                    nextSlide: function(){
+                      
+                      s.currentSlideIndex++;
+                   
+                      // If on last slide, loop to first
+                      if (s.currentSlideIndex >= s.numSlides) { 
+                        s.currentSlideIndex = 0;
+                      }
+                 
+                      SliceSlider.showSlide();
+                      console.log("sliding to next");
+                    },
+                  };
+            return SliceSlider;
+                }
+            },
+            methods: {
+                loadData: async function() {
+                    try {
+                        // avoid making LOAD_META_DATA call for now as it will cause the entire Promise.all to fail since no meta data is set up.
+                        let results = await Promise.all([this.$store.dispatch("getData", "banners"), this.$store.dispatch("getData", "feature_items"), this.$store.dispatch("getData", "promotions"), this.$store.dispatch("getData", "popups"), this.$store.dispatch('LOAD_PAGE_DATA', {url: "http://bonniedoon.mallmaverick.com/api/v2/bonniedoon/social.json"})]);
+                        return results;
+                    } catch (e) {
+                        console.log("Error loading data: " + e.message);
+                    }
+                },
+                closePopup() {
+                    this.show_popup = false;
+                    document.getElementById('popup_backdrop').style.display = "none";
+                },
+                loadMap () {
+                    console.log(document.getElementById('map'));
+                    window.initMap();
+                }
+            }
+        })
+    });
+    
+</script>
