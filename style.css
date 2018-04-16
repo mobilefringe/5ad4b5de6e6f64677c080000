@@ -3103,9 +3103,9 @@ gallery:after{
     color: #ccc;
     text-shadow: #000 0px -1px;
 }
-.slide__img {
-    background-attachment: unset;
-}
+// .slide__img {
+//     background-attachment: unset;
+// }
 @media (max-width: 1300px) {
     // #primary_nav ul .menu_item {
     //     min-width: 130px;
