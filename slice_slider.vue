@@ -83,7 +83,7 @@
             watch : {
             },
             computed: {
-                settings: {
+                settings () {
                       delta:              0,
                       currentSlideIndex:  0,
                       scrollThreshold:    40,
