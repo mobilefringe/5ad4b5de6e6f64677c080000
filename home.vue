@@ -141,6 +141,7 @@
     define(["Vue", "vuex", "vue!today_hours", "vue!search-component", 'vue!vue-slick', 'js-cookie', 'masonry' , 'vue-masonry-plugin', 'vue-lazy-load', "vue!google_map", "slice_slider"], function(Vue, Vuex, TodayHoursComponent, SearchComponent, slick, Cookies, masonry, VueMasonryPlugin, VueLazyload, GoogleMapAPI, SliceSlider) {
         Vue.use(VueMasonryPlugin.default);
         Vue.use(VueLazyload);
+        console.log("SliceSlider", SliceSlider);
         return Vue.component("home-component", {
             template: template, // the variable template will be injected
             props:['locale'],
