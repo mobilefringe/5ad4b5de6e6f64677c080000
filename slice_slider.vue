@@ -5,7 +5,7 @@
               
               <section class="slides-nav">
                 <nav class="slides-nav__nav">
-                  <button class="slides-nav__prev js-prev" ref="js_prev" @click="prevCliked">Prev</button>
+                  <button class="slides-nav__prev js-prev" ref="js_prev" @click="prevClicked">Prev</button>
                   <button class="slides-nav__next js-next" ref="js_next">Next</button>
                 </nav>
               </section>
