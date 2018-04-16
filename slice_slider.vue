@@ -114,32 +114,32 @@
                     /**
                      * Bind our click, scroll, key events
                      */
-                    bindEvents: function(){
-                      console.log("s is", s);
-                      // Scrollwheel & trackpad
-                      s.slides.on({
-                        'DOMMouseScroll mousewheel' : SliceSlider.handleScroll
-                      });
-                      // On click prev
-                      s.navPrev.on({
-                        'click' : SliceSlider.prevSlide
-                      });
-                      // On click next
-                      s.navNext.on({
-                        'click' : SliceSlider.nextSlide
-                      });
-                      // On Arrow keys
-                      $(document).keyup(function(e) {
-                        // Left or back arrows
-                        if ((e.which === 37) ||  (e.which === 38)){
-                          SliceSlider.prevSlide();
-                        }
-                        // Down or right
-                        if ((e.which === 39) ||  (e.which === 40)) {
-                          SliceSlider.nextSlide();
-                        }
-                      });
-                    },
+                    // bindEvents: function(){
+                    //   console.log("s is", s);
+                    //   // Scrollwheel & trackpad
+                    //   s.slides.on({
+                    //     'DOMMouseScroll mousewheel' : SliceSlider.handleScroll
+                    //   });
+                    //   // On click prev
+                    //   s.navPrev.on({
+                    //     'click' : SliceSlider.prevSlide
+                    //   });
+                    //   // On click next
+                    //   s.navNext.on({
+                    //     'click' : SliceSlider.nextSlide
+                    //   });
+                    //   // On Arrow keys
+                    //   $(document).keyup(function(e) {
+                    //     // Left or back arrows
+                    //     if ((e.which === 37) ||  (e.which === 38)){
+                    //       SliceSlider.prevSlide();
+                    //     }
+                    //     // Down or right
+                    //     if ((e.which === 39) ||  (e.which === 40)) {
+                    //       SliceSlider.nextSlide();
+                    //     }
+                    //   });
+                    // },
                     
                     /** 
                      * Interept scroll direction
