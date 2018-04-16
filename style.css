@@ -3103,6 +3103,9 @@ gallery:after{
     color: #ccc;
     text-shadow: #000 0px -1px;
 }
+.slides-nav button:after {
+    height:0;
+}
 // .slide__img {
 //     background-attachment: unset;
 // }
