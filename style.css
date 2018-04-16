@@ -248,7 +248,7 @@ strong, .bold {
 }
 .page_content {
    margin-bottom: 30px;
-       width: 100%;
+   width: 100%;
 }
 .image {
     max-width: 100%;
@@ -3093,6 +3093,11 @@ gallery:after{
         width: 100%;
     }
     
+}
+
+/******* SLICE SLIDER STYLE *********/
+.slide__title{
+    font-size: 3.75em;
 }
 @media (max-width: 1300px) {
     // #primary_nav ul .menu_item {
