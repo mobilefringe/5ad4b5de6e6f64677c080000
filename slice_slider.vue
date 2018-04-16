@@ -202,13 +202,7 @@
                      */
                     prevSlide: function(){
                       
-                      // If on first slide, loop to last
-                      if (s.currentSlideIndex <= 0) {
-                        s.currentSlideIndex = s.numSlides;
-                      }
-                      s.currentSlideIndex--;
                       
-                      SliceSlider.showSlide();
                     },
                 
                     /**
@@ -224,7 +218,13 @@
             },
             methods: {
                 prevSlide () {
-                    
+                    // If on first slide, loop to last
+                      if (s.currentSlideIndex <= 0) {
+                        s.currentSlideIndex = s.numSlides;
+                      }
+                      s.currentSlideIndex--;
+                      
+                      SliceSlider.showSlide();
                 },
                 nextSlide () {
                     s.currentSlideIndex++;
