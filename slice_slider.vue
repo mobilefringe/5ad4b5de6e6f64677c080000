@@ -1,23 +1,5 @@
 <template>
 	<div class="row page_content" v-if="dataLoaded">
-		<!--<div class="banner_div">-->
-		<!--	<div class="home-banner-container">-->
-		<!--		<slick ref="slick" :options="slickOptions">-->
-		<!--			<div class="" v-for="banner in banners" v-if="banners">-->
-					    <!--<div class="home-banner" v-bind:style="{ backgroundImage: 'url(' + banner.image_url + ')' }"></div>-->
-		<!--				<div class="home-banner" v-lazy:background-image="banner.image_url">-->
-						    <!--<div class="site_container">-->
-		<!--				        <div class="banner_text site_container">-->
-  <!--                                  <h2 class="banner_title">{{banner.name}}</h2>-->
-  <!--                                  <router-link class="banner_btn hvr-icon-wobble-horizontal" :to="banner.url">{{banner.description}} <i class="fa fa-angle-right hvr-icon"></i></router-link>-->
-  <!--                              </div>-->
-						    <!--</div>-->
-		<!--				</div>-->
-		<!--			</div>-->
-		<!--		</slick>-->
-		<!--	</div>-->
-		<!--</div>-->
-		<div class="slider_container" style="position: relative"> 
 		    <main>
                 <section class="slides"> 
                   
@@ -78,65 +60,6 @@
                 </section>
             </main>
         </div>
-		<div class="site_container">
-		    <div>
-		      <h3 class="home_page_title caps">{{$t("home_page.explore")}}</h3>
-		    </div>
-		    <div v-masonry transition-duration="0.3s" item-selector=".grid-item" >
-                <div v-masonry-tile class="item" >
-                    <div v-for="feature in feature_items" :class="'grid-item ' + feature.masonry_class ">
-                    	<div  :class="{ 'ih-item circle effect19' : feature.no_hover_class}"> 
-                    	<!--class="ih-item circle effect19"-->
-                    		<router-link :to="feature.url">
-                    			<img :src="feature.image_url" alt="name">
-                    			<div class="info">
-                    				<div class="content hvr-sink">
-                    					<h3 v-if="locale=='en-ca'"> {{feature.name}} </h3>
-                    					<h3 v-else> {{feature.name_2}} </h3>
-                    				</div>
-                    			</div>
-                    		</router-link>
-                    	</div>
-                    </div>
-                </div>
-            </div>
-            <div>
-		      <h3 class="home_page_title caps">{{$t("home_page.our_feed")}}</h3>
-		    </div>
-		    <div class="insta-feed-container">
-                <a v-for="(item, index) in instaFeed" :href="item.link" target="_blank" class="no_padding">
-                    <div class="insta-feed-image "  v-lazy:background-image="item.images.standard_resolution.url">
-                        <!--<a :href="item.link" target="_blank"><img :src="item.images.thumbnail.url"/></a>-->
-                        <div class="ih-item circle effect19">
-                            <div class="info">
-                				<div class="content">
-                					<p> 
-                    					<span>@{{item.caption.from.username}}</span> <br/>
-                    					<i class="fa fa-heart"></i>{{item.likes.count}} <br/>
-                    					<i class="fa fa-comment"></i> {{item.comments.count}} 
-                					</p>
-                				</div>
-                			</div>
-            			</div>
-                    </div>
-                </a>
-            </div>
-            <div id="home_hours_container"  v-if="getTodayHours">
-                <p class="open_now">
-                    <span v-if="getTodayHours.is_closed == null || !getTodayHours.is_closed ">{{$t("header.open_today")}}</span>
-                    <span v-else>{{$t("header.closed")}}</span> 
-                    <span v-if="getTodayHours.is_closed == null || !getTodayHours.is_closed ">
-                        {{getTodayHours.open_time | moment("h:mma", timezone)}} - {{getTodayHours.close_time | moment("h:mma", timezone)}} 
-                    </span>
-                        
-                    </p>
-            </div>
-		</div>
-		<div style="height: 300px;margin-bottom:-30px;">
-		    <google-map :property="property"></google-map>
-		</div>
-		<!--AIzaSyCj7UeR0E-kWVAnM7XG4sgm38JnCm6eqx0-->
-	</div>
 </template>
 
 <script>
@@ -145,6 +68,7 @@
             template: template, // the variable template will be injected
             data: function() {
                 return {
+                    options 
                 }
             },
             created () {
