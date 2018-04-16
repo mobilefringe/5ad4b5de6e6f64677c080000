@@ -141,9 +141,8 @@
 
 <script>
     define(["Vue", "jquery"], function(Vue, $) {
-        return Vue.component("home-component", {
+        return Vue.component("slice-slider", {
             template: template, // the variable template will be injected
-            props:['locale'],
             data: function() {
                 return {
                     suggestionAttribute: 'name',
