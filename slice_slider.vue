@@ -68,7 +68,7 @@
             template: template, // the variable template will be injected
             data: function() {
                 return {
-                    options 
+                    
                 }
             },
             created () {
@@ -80,6 +80,15 @@
             watch : {
             },
             computed: {
+                settings: {
+                      delta:              0,
+                      currentSlideIndex:  0,
+                      scrollThreshold:    40,
+                      slides:             $('.slide'),
+                      numSlides:          $('.slide').length,
+                      navPrev:            vm.$refs["nav_prev"],
+                      navNext:            vm.$refs["nav_next"],
+                    },
             },
             methods: {
                 init () {
