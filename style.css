@@ -3103,9 +3103,10 @@ gallery:after{
     color: #ccc;
     text-shadow: #000 0px -1px;
 }
-// .slide__img {
+.slide__img {
 //     background-attachment: unset;
-// }
+    transform: translateX(-50%);
+}
 // .is-sliding .slide__img {
 //   filter: sepia(100%);
 // }
