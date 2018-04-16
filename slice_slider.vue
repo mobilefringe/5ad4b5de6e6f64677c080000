@@ -156,12 +156,7 @@
             watch : {
             },
             computed: {
-                ...Vuex.mapGetters([
-                    'property',
-                    'timezone',
-                    'processedStores',
-                    'getTodayHours'
-                ]),
+                
                 banners () {
                     var banners = this.$store.state.banners;
                     banners.map(banner => { 
