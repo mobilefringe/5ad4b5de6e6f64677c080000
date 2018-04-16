@@ -140,7 +140,7 @@
 </template>
 
 <script>
-    define(["Vue", "jquery"], function(Vue, Vuex, $) {
+    define(["Vue", "jquery"], function(Vue, $) {
         Vue.use(VueMasonryPlugin.default);
         Vue.use(VueLazyload);
         
