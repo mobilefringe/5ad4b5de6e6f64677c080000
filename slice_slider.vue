@@ -151,13 +151,6 @@
                 
             },
             mounted () {
-                // this.sliceSlider.init();
-                // this.show_slider = true;
-                var vm= this;
-                setTimeout(function(){
-                    console.log("this.$refs.nav_prev", vm.$refs.nav_prev);
-                    vm.sliceSlider.init();
-                }, 1000);
                
             },
             watch : {
