@@ -145,25 +145,6 @@
             template: template, // the variable template will be injected
             data: function() {
                 return {
-                    suggestionAttribute: 'name',
-                    search: '',
-                    slickOptions: {
-                        arrows: false,
-                        autoplay: true,
-                        autoplaySpeed: 6000,
-                        cssEase: 'linear',
-                        dots: true,
-                        fade: true,
-                        infinite: true,
-                        slidesToShow: 1,
-                        speed: 1600
-                    },
-                    dataLoaded: false,
-                    show_popup: false,
-                    popup: null,
-                    formData : {},
-                    instaFeed: null,
-                    show_slider: false
                 }
             },
             created () {
