@@ -3107,7 +3107,14 @@ gallery:after{
     height:0;
 }
 .slides-nav {
-    
+        z-index: 99;
+    position: absolute;
+    right: auto;
+    display: block;
+    /* align-items: center; */
+    height: auto;
+    width: 100%;
+    bottom: 25px;
 }
 // .slide__img {
 //     background-attachment: unset;
