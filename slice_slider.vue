@@ -140,9 +140,12 @@
 </template>
 
 <script>
-    define(["Vue", "vuex", 'vue!vue-slick', 'js-cookie', 'masonry' , 'vue-masonry-plugin', 'vue-lazy-load', "vue!google_map", "jquery", "slice-slider"], function(Vue, Vuex, slick, Cookies, masonry, VueMasonryPlugin, VueLazyload, GoogleMapAPI, $,  SliceSlider) {
+    define(["Vue", "vuex",  "jquery"], function(Vue, Vuex, $) {
         Vue.use(VueMasonryPlugin.default);
         Vue.use(VueLazyload);
+        
+  
+        // console.log("SliceSlider", SliceSlider);
         
         return Vue.component("home-component", {
             template: template, // the variable template will be injected
