@@ -3107,7 +3107,7 @@ gallery:after{
 //     background-attachment: unset;
 // }
 .is-sliding .slide__img {
-  filter: grayscale(100%);
+  filter: sepia(100%);
 }
 @media (max-width: 1300px) {
     // #primary_nav ul .menu_item {
