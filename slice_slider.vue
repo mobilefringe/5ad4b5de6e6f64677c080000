@@ -233,6 +233,9 @@
             methods: {
                 prevClicked () {
                     
+                },
+                nextClicked () {
+                    
                 }
             }
         })
