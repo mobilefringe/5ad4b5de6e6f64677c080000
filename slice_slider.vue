@@ -66,10 +66,13 @@
     define(["Vue", "jquery"], function(Vue, $) {
         return Vue.component("slice-slider", {
             template: template, // the variable template will be injected
-            data: function() {
-                return {
-                    
-                }
+            props: {
+                options: {
+                  type: Object,
+                  default() {
+                    return {};
+                  },
+                },
             },
             created () {
                 
